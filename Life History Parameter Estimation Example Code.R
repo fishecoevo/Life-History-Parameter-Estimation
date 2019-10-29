@@ -3,7 +3,7 @@
 
 # Parameters to be estimated are:
 # 1. Asymptotic length
-# 2. Early growth rate (omega)
+# 2. Gallucci-Quinn Index (omega)
 # 3. Average size of largest 5% of catch
 # 4. Age at maturation
 # 5. Size at maturation
@@ -23,7 +23,7 @@ Fish$Maturity= as.factor(Fish$Maturity) # Restructuring maturity status
 
 Fish_F= subset(Fish, Fish$Sex== 2) # Subsetting for females only
 ############################################################################################
-# Asymptotic length and early growth of females:
+# Asymptotic length and Gallucci-Quinn Index:
 
 # Asymptotic length will be estimated using the standard von Bertalanffy Growth Equation,
 # as well as the largest 5% of the catch
@@ -42,7 +42,7 @@ F_sum$coef[4] # Standard error for K
 F_sum$coef[7] # p-value for L
 F_sum$coef[8] # p-value for K
 summary(Fem_L)[3] # Sigma value for goodness of fit
-F_omega= F_sum$coef[1]*F_sum$coef[2] # Omega coefficient for early growth near age 0
+F_omega= F_sum$coef[1]*F_sum$coef[2] # Gallucci-Quinn Index for early growth near age 0
 # Calculating the largest 5% of catch
 F_large5= mean(head(sort(Fish_F$Fork_length, decreasing=TRUE), 0.05*dim(Fish_F)[1]))
 F_large5 # Mean largest 5% of females is 898.25 mm fork length
